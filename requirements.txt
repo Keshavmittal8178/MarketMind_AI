@@ -1,0 +1,12 @@
+# Standardized Dependencies for MarketMind AI
+pydantic>=2.6.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+numpy>=1.26.0
+pandas>=2.1.0
+scikit-learn>=1.3.0
+statsmodels>=0.14.0
+yfinance>=0.2.40
+feedparser>=6.0.10
+streamlit>=1.33.0
+plotly>=5.20.0

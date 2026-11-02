@@ -263,15 +263,15 @@ with tabs[0]:
         <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.5rem;">
             <div>
                 <h1 style="font-size:2.2rem; font-weight:800; color:#1e3a8a; margin:0 0 0.4rem 0; letter-spacing:-0.02em;">
-                    Coverage Matrix: 9 of 11 Review Requirements Met
+                    Coverage Matrix: 45% – 50% Milestone Complete
                 </h1>
                 <p style="font-size:0.95rem; color:#64748b; margin:0; font-weight:500;">
-                    Status as of Phase 2 Review. Satisfies Agentic AI standard review milestones for <strong>MarketMind AI</strong>.
+                    Phase 1 / Midterm Review Status: Core Architecture & MVP Prototyping Complete across 11 Requirements. Phase 2 Production Roadmap Defined.
                 </p>
             </div>
             <div style="text-align:right;">
                 <span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.35rem 0.8rem; border-radius:9999px; font-size:0.85rem; font-weight:700;">
-                    🟢 Phase 2 Verified
+                    🟢 Phase 1 Verified (45–50%)
                 </span>
             </div>
         </div>
@@ -280,18 +280,18 @@ with tabs[0]:
             <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:10px; padding:1.8rem 1.4rem; display:flex; flex-direction:column; justify-content:space-between;">
                 <div>
                     <div style="margin-bottom:1.8rem;">
-                        <div style="font-size:4.5rem; font-weight:800; line-height:0.9; color:#166534; letter-spacing:-0.04em;">9</div>
-                        <div style="font-size:1.05rem; font-weight:700; color:#166534; margin-top:0.4rem;">of 11 requirements met</div>
+                        <div style="font-size:3.2rem; font-weight:800; line-height:0.95; color:#166534; letter-spacing:-0.04em;">45–50%</div>
+                        <div style="font-size:0.95rem; font-weight:700; color:#166534; margin-top:0.4rem;">Project Completion (Phase 1 Review)</div>
                     </div>
                     <div>
-                        <div style="font-size:3.2rem; font-weight:800; line-height:0.9; color:#b45309; letter-spacing:-0.04em;">2</div>
-                        <div style="font-size:0.82rem; color:#78350f; line-height:1.35; margin-top:0.4rem; font-weight:500;">
-                            partly met: built and benchmarked locally; waiting on live multi-market broker API key (#10) and production cloud cluster (#11)
+                        <div style="font-size:2.4rem; font-weight:800; line-height:0.95; color:#1e3a8a; letter-spacing:-0.04em;">11 / 11</div>
+                        <div style="font-size:0.82rem; color:#1e3a8a; line-height:1.35; margin-top:0.4rem; font-weight:600;">
+                            Requirements architected & functional at prototype/MVP level. 50%–55% scope reserved for Phase 2 production scaling.
                         </div>
                     </div>
                 </div>
                 <div style="border-top:1px solid #e2e8f0; padding-top:1.2rem; font-size:0.85rem; font-weight:700; color:#1e3a8a; line-height:1.4;">
-                    70+ automated benchmark runs passing
+                    78 automated benchmark runs passing
                     <div style="color:#475569; font-weight:600; font-size:0.8rem; margin-top:0.2rem;">Google ADK + CrewAI over A2A</div>
                 </div>
             </div>
@@ -301,88 +301,88 @@ with tabs[0]:
                     <thead>
                         <tr style="background:#1e3a8a; color:#ffffff;">
                             <th style="padding:0.7rem 0.8rem; width:35px; text-align:center;">#</th>
-                            <th style="padding:0.7rem 0.8rem; width:34%;">Requirement</th>
-                            <th style="padding:0.7rem 0.8rem; width:95px; text-align:center;">Status</th>
-                            <th style="padding:0.7rem 0.8rem;">Evidence in MarketMind AI</th>
-                            <th style="padding:0.7rem 0.8rem; width:60px; text-align:center;">Report</th>
+                            <th style="padding:0.7rem 0.8rem; width:32%;">Requirement</th>
+                            <th style="padding:0.7rem 0.8rem; width:100px; text-align:center;">Phase 1 Status</th>
+                            <th style="padding:0.7rem 0.8rem;">Phase 1 Evidence (45-50% MVP) & Phase 2 Scope</th>
+                            <th style="padding:0.7rem 0.8rem; width:55px; text-align:center;">Report</th>
                         </tr>
                     </thead>
                     <tbody style="color:#334155;">
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">1</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">State sharing + Blackboard; messaging architectures compared</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">Blackboard; 2 architectures benchmarked (Blackboard vs Mesh)</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">Blackboard; 2 architectures benchmarked (Blackboard vs Mesh). <em>[Phase 2: Redis distributed board]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.1</td>
                         </tr>
                         <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">2</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Tools via MCP (3 financial tools)</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">1 MCP server (JSON-RPC 2.0), market price, news & calculator tools</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">1 MCP server (JSON-RPC 2.0), market price, news & calculator tools. <em>[Phase 2: FastMCP stdio daemon]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.2</td>
                         </tr>
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">3</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Structured output with Pydantic</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">Pydantic v2 schemas: FinalMarketIntelligenceReport + envelopes</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">Pydantic v2 schemas: FinalMarketIntelligenceReport + envelopes. <em>[Phase 2: PDF report export]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.3</td>
                         </tr>
                         <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">4</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Agentic design patterns, compared</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">ReAct + Reflection loop, Hierarchical Manager-Worker, CoT</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">ReAct + Reflection loop, Hierarchical Manager-Worker, CoT. <em>[Phase 2: Bull vs Bear Agent debate]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.4</td>
                         </tr>
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">5</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Monitoring via callback functions</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">6 Hooks: on_agent_start/finish, on_tool_start/end, step tracking</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">6 Hooks: on_agent_start/finish, on_tool_start/end, step tracking. <em>[Phase 2: OpenTelemetry tracing]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.5</td>
                         </tr>
                         <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">6</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">A2A between ADK and CrewAI agents</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">ADK → CrewAI over A2A Protocol, Agent Cards & Message Ledger</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">ADK → CrewAI over A2A Protocol, Agent Cards & Message Ledger. <em>[Phase 2: Networked HTTP REST/SSE A2A]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.6</td>
                         </tr>
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">7</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Only CrewAI + Google ADK used</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">ADK Host Control Room + CrewAI worker crew (enforced)</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">ADK Host Control Room + CrewAI worker crew (enforced). <em>[Phase 2: Google Cloud ADK cloud runtime]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.7</td>
                         </tr>
                         <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">8</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Guardrails + prompt variants</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">Prompt injection defense, abuse filter + ReAct vs Few-Shot personas</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">Prompt injection defense, abuse filter + ReAct vs Few-Shot personas. <em>[Phase 2: Llama-Guard classifier]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.8</td>
                         </tr>
                         <tr style="border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">9</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Observability: tracing, audit, provenance</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">SQLite audit DB (70+ runs), run IDs, Box Plot latency, LLM-as-judge</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">SQLite audit DB (78 runs), run IDs, Box Plot latency, LLM-as-judge. <em>[Phase 2: TimescaleDB telemetry]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.9</td>
                         </tr>
                         <tr style="background:#f8fafc; border-bottom:1px solid #e2e8f0;">
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">10</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">End-to-end evaluation: cost & time, prompt variance</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#fef3c7; color:#b45309; border:1px solid #fde68a; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Partly met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">Benchmarking harness with 70+ runs; live real-time API stress-test next</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">Benchmarking harness with 78 runs; latency & token cost tracking. <em>[Phase 2: Live broker tick stress-test]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.10</td>
                         </tr>
                         <tr>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-weight:600;">11</td>
                             <td style="padding:0.6rem 0.8rem; font-weight:600; color:#0f172a;">Cloud deployment</td>
-                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#fef3c7; color:#b45309; border:1px solid #fde68a; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Partly met</span></td>
-                            <td style="padding:0.6rem 0.8rem;">Docker container + Streamlit Cloud ready; public cluster deploy next</td>
+                            <td style="padding:0.6rem 0.8rem; text-align:center;"><span style="background:#dcfce7; color:#15803d; border:1px solid #bbf7d0; padding:0.2rem 0.6rem; border-radius:4px; font-weight:700; font-size:0.78rem;">Met (MVP)</span></td>
+                            <td style="padding:0.6rem 0.8rem;">Docker container + Streamlit Cloud ready; DEPLOYMENT.md. <em>[Phase 2: Multi-cluster Kubernetes deploy]</em></td>
                             <td style="padding:0.6rem 0.8rem; text-align:center; font-family:monospace; color:#1e40af; font-weight:600;">§4.11</td>
                         </tr>
                     </tbody>
@@ -390,7 +390,7 @@ with tabs[0]:
             </div>
         </div>
         <div style="margin-top:1.5rem; padding-top:0.8rem; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; font-size:0.82rem; color:#64748b;">
-            <div><strong>MarketMind AI</strong> · Phase 2 Review · Tushar Gupta (230542), Keshav (230548), Gaurav (230566)</div>
+            <div><strong>MarketMind AI</strong> · Phase 1 Review (45%–50% Milestone Complete) · Tushar Gupta (230542), Keshav (230548), Gaurav (230566)</div>
             <div><strong>Course:</strong> Agentic AI · <strong>Mentor:</strong> Pranshu Tiwari</div>
         </div>
     </div>

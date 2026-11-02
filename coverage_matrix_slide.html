@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coverage Matrix: 9 of 11 Review Requirements Met — MarketMind AI</title>
+    <title>Coverage Matrix: 45%–50% Review Milestone Met — MarketMind AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -71,31 +71,31 @@
             margin-bottom: 1.8rem;
         }
         .metric-number-green {
-            font-size: 4.8rem;
+            font-size: 3.2rem;
             font-weight: 800;
-            line-height: 0.9;
+            line-height: 0.95;
             color: #166534;
             letter-spacing: -0.04em;
         }
         .metric-label-green {
-            font-size: 1.05rem;
+            font-size: 0.95rem;
             font-weight: 700;
             color: #166534;
             margin-top: 0.5rem;
         }
         .metric-number-yellow {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             font-weight: 800;
-            line-height: 0.9;
-            color: #b45309;
+            line-height: 0.95;
+            color: #1e3a8a;
             letter-spacing: -0.04em;
         }
         .metric-desc-yellow {
             font-size: 0.8rem;
-            color: #78350f;
+            color: #1e3a8a;
             line-height: 1.35;
             margin-top: 0.5rem;
-            font-weight: 500;
+            font-weight: 600;
         }
         .metric-badge-footer {
             border-top: 1px solid #e2e8f0;
@@ -262,8 +262,8 @@
     <div class="slide-container">
         <!-- Header -->
         <div class="header">
-            <h1>Coverage Matrix: 9 of 11 Review Requirements Met</h1>
-            <p>Status as of Phase 2 Review. Each "§" section links to the matching heading in <span class="link-ref">MarketMind_AI_Progress_Report.docx</span>.</p>
+            <h1>Coverage Matrix: 45% – 50% Milestone Complete</h1>
+            <p>Phase 1 / Midterm Review Status: Core Architecture & MVP Prototyping Complete across 11 Requirements. Phase 2 Production Roadmap Defined. Each "§" section links to <span class="link-ref">MarketMind_AI_Progress_Report.docx</span>.</p>
         </div>
 
         <!-- Main Content -->
@@ -272,20 +272,20 @@
             <div class="metrics-card">
                 <div>
                     <div class="metric-block">
-                        <div class="metric-number-green">9</div>
-                        <div class="metric-label-green">of 11 requirements met</div>
+                        <div class="metric-number-green">45–50%</div>
+                        <div class="metric-label-green">Project Completion (Phase 1 Review)</div>
                     </div>
 
                     <div class="metric-block">
-                        <div class="metric-number-yellow">2</div>
+                        <div class="metric-number-yellow">11 / 11</div>
                         <div class="metric-desc-yellow">
-                            partly met: built and benchmarked locally; waiting on live multi-market broker API key (#10) and production cloud cluster (#11)
+                            Requirements architected & functional at prototype/MVP level. 50%–55% scope reserved for Phase 2 production scaling.
                         </div>
                     </div>
                 </div>
 
                 <div class="metric-badge-footer">
-                    70+ automated benchmark runs passing
+                    78 automated benchmark runs passing
                     <span>Google ADK + CrewAI over A2A</span>
                 </div>
             </div>
@@ -298,7 +298,7 @@
                             <th class="col-num">#</th>
                             <th class="col-req">Requirement</th>
                             <th class="col-status">Status</th>
-                            <th class="col-evidence">Evidence</th>
+                            <th class="col-evidence">Phase 1 Evidence (45-50% MVP) & Phase 2 Scope</th>
                             <th class="col-report">Report</th>
                         </tr>
                     </thead>
@@ -306,78 +306,78 @@
                         <tr>
                             <td class="center">1</td>
                             <td class="req-title">State sharing + Blackboard; messaging architectures compared</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>Blackboard; 2 architectures benchmarked (Blackboard vs Mesh)</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>Blackboard; 2 architectures benchmarked (Blackboard vs Mesh). <em>[Phase 2: Redis distributed board]</em></td>
                             <td class="report-link">§4.1</td>
                         </tr>
                         <tr>
                             <td class="center">2</td>
                             <td class="req-title">Tools via MCP (3 financial tools)</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>1 MCP server (JSON-RPC 2.0), market price, news & calculator tools</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>1 MCP server (JSON-RPC 2.0), market price, news & calculator tools. <em>[Phase 2: FastMCP stdio daemon]</em></td>
                             <td class="report-link">§4.2</td>
                         </tr>
                         <tr>
                             <td class="center">3</td>
                             <td class="req-title">Structured output with Pydantic</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>Pydantic v2 schemas: FinalMarketIntelligenceReport + envelopes</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>Pydantic v2 schemas: FinalMarketIntelligenceReport + envelopes. <em>[Phase 2: PDF report export]</em></td>
                             <td class="report-link">§4.3</td>
                         </tr>
                         <tr>
                             <td class="center">4</td>
                             <td class="req-title">Agentic design patterns, compared</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>ReAct + Reflection loop, Hierarchical Manager-Worker, CoT</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>ReAct + Reflection loop, Hierarchical Manager-Worker, CoT. <em>[Phase 2: Bull vs Bear Agent debate]</em></td>
                             <td class="report-link">§4.4</td>
                         </tr>
                         <tr>
                             <td class="center">5</td>
                             <td class="req-title">Monitoring via callback functions</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>6 Hooks: on_agent_start/finish, on_tool_start/end, step tracking</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>6 Hooks: on_agent_start/finish, on_tool_start/end, step tracking. <em>[Phase 2: OpenTelemetry tracing]</em></td>
                             <td class="report-link">§4.5</td>
                         </tr>
                         <tr>
                             <td class="center">6</td>
                             <td class="req-title">A2A between ADK and CrewAI agents</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>ADK → CrewAI over A2A Protocol, Agent Cards & Message Ledger</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>ADK → CrewAI over A2A Protocol, Agent Cards & Message Ledger. <em>[Phase 2: Networked HTTP REST/SSE A2A]</em></td>
                             <td class="report-link">§4.6</td>
                         </tr>
                         <tr>
                             <td class="center">7</td>
                             <td class="req-title">Only CrewAI + Google ADK used</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>ADK Host Control Room + CrewAI worker crew (enforced)</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>ADK Host Control Room + CrewAI worker crew (enforced). <em>[Phase 2: Google Cloud ADK cloud runtime]</em></td>
                             <td class="report-link">§4.7</td>
                         </tr>
                         <tr>
                             <td class="center">8</td>
                             <td class="req-title">Guardrails + prompt variants</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>Prompt injection defense, abuse filter + ReAct vs Few-Shot personas</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>Prompt injection defense, abuse filter + ReAct vs Few-Shot personas. <em>[Phase 2: Llama-Guard classifier]</em></td>
                             <td class="report-link">§4.8</td>
                         </tr>
                         <tr>
                             <td class="center">9</td>
                             <td class="req-title">Observability: tracing, audit, provenance</td>
-                            <td class="center"><span class="badge badge-met">Met</span></td>
-                            <td>SQLite audit DB (70+ runs), run IDs, Box Plot latency, LLM-as-judge</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>SQLite audit DB (78 runs), run IDs, Box Plot latency, LLM-as-judge. <em>[Phase 2: TimescaleDB telemetry]</em></td>
                             <td class="report-link">§4.9</td>
                         </tr>
                         <tr>
                             <td class="center">10</td>
                             <td class="req-title">End-to-end evaluation: cost & time, prompt variance</td>
-                            <td class="center"><span class="badge badge-partly">Partly met</span></td>
-                            <td>Benchmarking harness with 70+ runs; live real-time API stress-test next</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>Benchmarking harness with 78 runs; latency & token cost tracking. <em>[Phase 2: Live broker tick stress-test]</em></td>
                             <td class="report-link">§4.10</td>
                         </tr>
                         <tr>
                             <td class="center">11</td>
                             <td class="req-title">Cloud deployment</td>
-                            <td class="center"><span class="badge badge-partly">Partly met</span></td>
-                            <td>Docker container + Streamlit Cloud ready; public cluster deploy next</td>
+                            <td class="center"><span class="badge badge-met">Met (MVP)</span></td>
+                            <td>Docker container + Streamlit Cloud ready; DEPLOYMENT.md. <em>[Phase 2: Multi-cluster Kubernetes deploy]</em></td>
                             <td class="report-link">§4.11</td>
                         </tr>
                     </tbody>
@@ -388,7 +388,7 @@
         <!-- Footer -->
         <div class="footer">
             <div>
-                <strong>MarketMind AI</strong> · Phase 2 Review · Tushar Gupta (230542), Keshav (230548), Gaurav (230566)
+                <strong>MarketMind AI</strong> · Phase 1 Review (45%–50% Milestone Complete) · Tushar Gupta (230542), Keshav (230548), Gaurav (230566)
             </div>
             <div>
                 <strong>Course:</strong> Agentic AI · <strong>Mentor:</strong> Pranshu Tiwari

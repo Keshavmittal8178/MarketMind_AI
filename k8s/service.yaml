@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: marketmind-service
+  namespace: default
+  labels:
+    app: marketmind-ai
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http-dashboard
+      port: 80
+      targetPort: 8501
+    - name: http-gateway
+      port: 8000
+      targetPort: 8000
+  selector:
+    app: marketmind-ai
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: marketmind-config
+  namespace: default
+data:
+  REDIS_URL: "redis://redis-master.default.svc.cluster.local:6379/0"
+  A2A_PROTOCOL_VERSION: "1.0"
+  BROKER_ENVIRONMENT: "sandbox"
+  TRADING_RISK_STOP_LOSS_PCT: "2.5"
+  TRADING_RISK_TAKE_PROFIT_PCT: "6.0"
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: marketmind-hpa
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: marketmind-ai-enterprise
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 75
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80

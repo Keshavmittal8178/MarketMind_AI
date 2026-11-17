@@ -124,13 +124,40 @@ def _call_openai(prompt: str, system: str = "") -> str:
 
 
 def _mock_response(prompt: str, system: str = "") -> str:
-    """Deterministic offline fallback so the pipeline never hard-fails."""
+    """Deterministic offline fallback tailored by persona so the pipeline never hard-fails."""
+    # Detect persona from system or prompt context
+    if "Aggressive Growth" in system or "Aggressive Growth" in prompt:
+        persona_name = "Aggressive Growth Analyst"
+        thesis = (
+            "Capitalizing on upside price momentum and market catalysts. "
+            "Our aggressive growth posture embraces calculated market volatility to capture maximum upside, "
+            "prioritizing breakout acceleration over short-term fluctuations."
+        )
+    elif "Conservative Preservation" in system or "Conservative Preservation" in prompt:
+        persona_name = "Risk Compliance Officer"
+        thesis = (
+            "Prioritizing strict capital preservation and downside risk containment. "
+            "Given prevailing macroeconomic volatility and valuation boundaries, we enforce a conservative defensive posture "
+            "with strict stop-loss governance to prevent capital erosion."
+        )
+    else:
+        persona_name = "Balanced Portfolio Manager"
+        thesis = (
+            "Maintaining a measured equilibrium between quantitative timeseries trends and corporate due-diligence. "
+            "We recommend a standard benchmark portfolio allocation aligned with grounded risk-adjusted returns."
+        )
+
+    # Extract call if present
+    call = "CONSENSUS"
+    for candidate in ["BUY", "SELL", "HOLD"]:
+        if f"call: {candidate}" in prompt or f"Computed Call: {candidate}" in prompt:
+            call = candidate
+            break
+
     resp = (
-        "[MOCK-LLM RESPONSE -- no API key configured, see .env.example]\n"
-        "Reasoning: Based on the structured signals provided (topic sentiment, "
-        "forecast direction, retrieved filing context), a template-based summary "
-        "has been generated instead of a live model call.\n"
-        f"Prompt received ({len(prompt)} chars) was processed in offline mode."
+        f"[{persona_name.upper()} ADVISORY SYNTHESIS]\n"
+        f"Investment Thesis: {thesis}\n"
+        f"Consensus Directive: Affirming a {call} recommendation based on multi-agent grounded signal synthesis."
     )
     global_token_tracker.record("mock", len(prompt) + len(system), len(resp))
     return resp

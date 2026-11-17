@@ -31,23 +31,56 @@ adk_advisory_agent = ADKAgent(
 )
 
 
-def _action_aggregate_signals(sentiment: float, forecast_pct: float, has_rag_context: bool) -> dict:
-    """Action 1: combine the three worker-agent signals into a weighted score."""
-    score = (0.6 * (forecast_pct / 5.0)) + (0.4 * sentiment)
+def _action_aggregate_signals(
+    sentiment: float,
+    forecast_pct: float,
+    has_rag_context: bool,
+    persona: str = "Balanced Advisor"
+) -> dict:
+    """Action 1: combine worker signals into a weighted score tailored to the advisor persona."""
+    if persona == "Aggressive Growth":
+        # Aggressive: 75% weight on growth momentum, 25% on sentiment
+        score = (0.75 * (forecast_pct / 4.0)) + (0.25 * sentiment)
+    elif persona == "Conservative Preservation":
+        # Conservative: 40% weight on forecast, 60% on news/sentiment stability (penalizes volatility)
+        score = (0.40 * (forecast_pct / 6.0)) + (0.60 * sentiment)
+    else:  # Balanced Advisor
+        score = (0.60 * (forecast_pct / 5.0)) + (0.40 * sentiment)
+
     score = max(-1.0, min(1.0, score))
-    return {"raw_score": round(score, 3), "rag_grounded": has_rag_context}
+    return {"raw_score": round(score, 3), "rag_grounded": has_rag_context, "persona": persona}
 
 
-def _action_decide_call(agg: dict, min_confidence: float) -> dict:
-    """Action 2: turn the aggregated score into a BUY/HOLD/SELL call + confidence."""
+def _action_decide_call(
+    agg: dict,
+    min_confidence: float,
+    persona: str = "Balanced Advisor"
+) -> dict:
+    """Action 2: turn aggregated score into BUY/HOLD/SELL call + confidence using persona risk thresholds."""
     score = agg["raw_score"]
-    confidence = min(0.95, 0.5 + abs(score) * 0.45 + (0.05 if agg["rag_grounded"] else 0))
-    if score > 0.15:
+
+    if persona == "Aggressive Growth":
+        # Lower hurdle rate to BUY (> 0.08); higher upside confidence
+        buy_threshold = 0.08
+        sell_threshold = -0.22
+        confidence = min(0.96, 0.58 + abs(score) * 0.42 + (0.05 if agg["rag_grounded"] else 0))
+    elif persona == "Conservative Preservation":
+        # Strict hurdle rate to BUY (> 0.28); easily defaults to HOLD/SELL to protect capital
+        buy_threshold = 0.28
+        sell_threshold = -0.06
+        confidence = min(0.88, 0.44 + abs(score) * 0.38 + (0.05 if agg["rag_grounded"] else 0))
+    else:  # Balanced Advisor
+        buy_threshold = 0.15
+        sell_threshold = -0.15
+        confidence = min(0.95, 0.50 + abs(score) * 0.45 + (0.05 if agg["rag_grounded"] else 0))
+
+    if score > buy_threshold:
         call = "BUY"
-    elif score < -0.15:
+    elif score < sell_threshold:
         call = "SELL"
     else:
         call = "HOLD"
+
     return {"call": call, "confidence": round(confidence, 2), "meets_bar": confidence >= min_confidence}
 
 
@@ -87,13 +120,13 @@ def run(
             if callback_handler:
                 callback_handler.on_agent_step(AGENT_NAME, "THOUGHT", thought)
 
-            agg = _action_aggregate_signals(sentiment, forecast_pct, has_rag_context)
-            action = f"Action {iteration}: aggregate_signals -> {agg}"
+            agg = _action_aggregate_signals(sentiment, forecast_pct, has_rag_context, persona=advisor_persona)
+            action = f"Action {iteration}: aggregate_signals[{advisor_persona}] -> {agg}"
             trace_lines.append(action)
             if callback_handler:
                 callback_handler.on_agent_step(AGENT_NAME, "ACTION", action)
 
-            decision = _action_decide_call(agg, min_confidence)
+            decision = _action_decide_call(agg, min_confidence, persona=advisor_persona)
             obs = f"Observation {iteration}: decide_call -> {decision}"
             trace_lines.append(obs)
             if callback_handler:

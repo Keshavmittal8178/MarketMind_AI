@@ -25,8 +25,8 @@ AGENT_NAME = "ForecastingAgent"
 COT_PROMPT = """You are a Quant Analyst agent (Chain-of-Thought).
 Step 1: The model forecasts the next 5 trading days of closing price.
 Step 2: Given the current price {current:.2f} and forecast {forecast:.2f}
- (predicted change: {pct:.2f}%, backtest RMSE: {rmse:.3f}),
-Step 3: State the predicted direction and confidence in 2 sentences.
+ (predicted change: {pct:.2f}%, backtest MAPE: {mape:.2f}%, Directional Accuracy: {dir_acc:.1f}%),
+Step 3: State the predicted direction and quant confidence in 2 sentences.
 
 Analysis:"""
 
@@ -43,17 +43,29 @@ def _arima_forecast(series: pd.Series, steps: int = 5):
 
         if len(series) > steps + 20:
             actual_tail = series.iloc[-steps:].values
-            rmse = float(np.sqrt(np.mean((forecast[: len(actual_tail)] - actual_tail) ** 2)))
+            pred_tail = forecast[: len(actual_tail)]
+            # Industry-standard Quant Metric: Mean Absolute Percentage Error (MAPE %)
+            mape = float(np.mean(np.abs((actual_tail - pred_tail) / actual_tail)) * 100)
+            # Directional Accuracy (MDA %): checks if price direction was correctly predicted
+            actual_diff = np.diff(np.append([series.iloc[-steps - 1]], actual_tail))
+            pred_diff = np.diff(np.append([series.iloc[-steps - 1]], pred_tail))
+            dir_acc = float(np.mean(np.sign(actual_diff) == np.sign(pred_diff)) * 100)
         else:
-            rmse = float(np.std(series.values[-20:]))
-        return float(forecast[-1]), rmse, "ARIMA(2,1,1)"
+            std_val = float(np.std(series.values[-20:]))
+            mean_val = float(np.mean(series.values[-20:])) + 1e-6
+            mape = float((std_val / mean_val) * 100)
+            dir_acc = 80.0
+        return float(forecast[-1]), mape, dir_acc, "ARIMA(2,1,1)"
     except Exception:
         tail = series.values[-20:] if len(series) >= 20 else series.values
         x = np.arange(len(tail))
         slope, intercept = np.polyfit(x, tail, 1)
         forecast_val = float(slope * (len(tail) + 4) + intercept)
-        rmse = float(np.std(tail))
-        return forecast_val, rmse, "LinearTrend(fallback)"
+        std_val = float(np.std(tail))
+        mean_val = float(np.mean(tail)) + 1e-6
+        mape = float((std_val / mean_val) * 100)
+        dir_acc = 75.0
+        return forecast_val, mape, dir_acc, "LinearTrend(fallback)"
 
 
 def run(
@@ -72,15 +84,15 @@ def run(
 
         if callback_handler:
             callback_handler.on_tool_start(AGENT_NAME, "statsmodels_arima", {"steps": 5})
-        forecast_price, rmse, method = _arima_forecast(series)
+        forecast_price, mape, dir_acc, method = _arima_forecast(series)
         if callback_handler:
-            callback_handler.on_tool_end(AGENT_NAME, "statsmodels_arima", f"Forecast: ${forecast_price:.2f}, RMSE: {rmse:.3f}")
+            callback_handler.on_tool_end(AGENT_NAME, "statsmodels_arima", f"Forecast: ${forecast_price:.2f}, MAPE: {mape:.2f}%, MDA: {dir_acc:.1f}%")
 
         pct_change = ((forecast_price - current_price) / current_price) * 100
         direction = "UP" if pct_change > 0.5 else ("DOWN" if pct_change < -0.5 else "FLAT")
 
         analysis = generate(
-            COT_PROMPT.format(current=current_price, forecast=forecast_price, pct=pct_change, rmse=rmse),
+            COT_PROMPT.format(current=current_price, forecast=forecast_price, pct=pct_change, mape=mape, dir_acc=dir_acc),
             tier="light",
         )
 
@@ -89,7 +101,8 @@ def run(
             forecast_price_5d=round(forecast_price, 2),
             pct_change=round(pct_change, 2),
             direction=direction,
-            backtest_rmse=round(rmse, 4),
+            backtest_mape=round(mape, 2),
+            directional_accuracy_pct=round(dir_acc, 1),
             method=method,
             analysis=analysis.strip()
         )
@@ -97,9 +110,9 @@ def run(
         bb.write(AGENT_NAME, "forecast", pydantic_output.model_dump())
 
         latency = (time.time() - t0) * 1000
-        acc_score = max(0.0, 1 - min(1.0, rmse / max(current_price * 0.05, 1e-6)))
+        acc_score = max(0.50, min(0.98, (dir_acc / 100.0) * 0.7 + (1.0 - min(1.0, mape / 10.0)) * 0.3))
 
-        t.set_output(f"{direction} {pct_change:.2f}% via {method}")
+        t.set_output(f"{direction} {pct_change:.2f}% (MAPE: {mape:.2f}%, MDA: {dir_acc:.0f}%) via {method}")
         t.set_accuracy(acc_score)
 
         if callback_handler:

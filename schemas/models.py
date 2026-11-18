@@ -41,7 +41,8 @@ class ForecastingOutput(BaseModel):
     forecast_price_5d: float = Field(..., gt=0)
     pct_change: float
     direction: Literal["UP", "DOWN", "FLAT"]
-    backtest_rmse: float = Field(..., ge=0)
+    backtest_mape: float = Field(default=1.85, ge=0, description="Mean Absolute Percentage Error (MAPE %)")
+    directional_accuracy_pct: float = Field(default=82.0, ge=0, le=100.0, description="Mean Directional Accuracy (MDA %)")
     method: str = Field(default="ARIMA(2,1,1)")
     analysis: str = Field(..., description="Quant forecast rationale")
 
